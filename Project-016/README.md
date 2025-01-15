@@ -44,7 +44,7 @@ The script creates a grid of dots with the following steps:
 
 ## Example
 
-![Dot Pattern Example](example_image.png)
+![Dot Pattern Example]Project-016/image.jpg
 
 ## License
 
