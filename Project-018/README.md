@@ -1,79 +1,88 @@
-# Snake Game 🐍
+# Snake Game 🐍🎮
 
-Welcome to the **Snake Game**! This Python game uses the Turtle graphics library, where the player controls a snake that grows longer each time it eats food. The objective is to avoid colliding with the walls and the snake's own body.
+Welcome to the **Snake Game**! This is a modern implementation of the classic Snake game, where you guide a snake to eat food, grow longer, and aim for the highest score while avoiding collisions.
 
 ## 📝 Description
 
-This game allows users to:
-- Control a snake that moves around the screen.
-- Eat food that appears at random positions to grow the snake and increase the score.
-- Avoid collisions with the walls and the snake's own body to keep playing.
-- Track the score during gameplay and display the final score when the game is over.
+In this game, you control a snake that:
+- Moves continuously in the chosen direction.
+- Grows longer by eating food.
+- Ends the game (or resets) if it collides with the wall or itself.
 
-### How the Game Works:
-1. The game begins with a snake of three segments.
-2. The player controls the snake using the arrow keys to move up, down, left, or right.
-3. Each time the snake eats food, it grows longer, and the score increases.
-4. The game ends if the snake collides with the wall or itself.
-5. The final score is displayed when the game is over.
-
-### Example:
-- If the snake eats food, it grows by one segment and the score increases by 1.
-- If the snake collides with the wall or its own body, the game ends and the final score is shown.
+### Game Features:
+1. **Score Tracking**:
+   - The score increases when the snake eats food.
+   - High scores are saved to a file and displayed on the screen.
+2. **Food System**:
+   - Randomly generated food items appear on the screen for the snake to consume.
+3. **Snake Movement**:
+   - The snake moves in one direction unless the player changes it using the arrow keys.
+4. **Game Reset**:
+   - The game resets automatically if the snake collides with the wall or itself.
 
 ## 🖥️ Code Overview
 
-The program is organized into multiple files and classes, each serving a specific purpose:
+The project is divided into multiple files for better organization:
 
-### 1. **Snake Class (`snake.py`)**:
+### 1. **Snake Class (`snake.py`)**
    - **Attributes**:
      - `segments`: A list of turtle objects representing the snake's body.
-     - `head`: The head of the snake, which controls its movement.
+     - `head`: The first segment of the snake, which leads its movement.
    - **Methods**:
      - `create_snake()`: Initializes the snake with three segments.
-     - `move()`: Moves the snake by updating the position of each segment.
-     - `add_segment()`: Adds a new segment to the snake's body.
-     - `extend()`: Extends the snake by one segment.
-     - `up()`, `down()`, `left()`, `right()`: Methods to change the snake's direction.
+     - `move()`: Moves the snake forward by updating each segment's position.
+     - `add_segment(pos)`: Adds a new segment to the snake.
+     - `extend()`: Extends the snake by adding a segment at the tail.
+     - `reset()`: Resets the snake to its starting state after a collision.
+     - Direction methods (`up`, `down`, `left`, `right`): Change the snake's movement direction.
 
-### 2. **Food Class (`food.py`)**:
+### 2. **Food Class (`food.py`)**
    - **Attributes**:
-     - `shape`: The shape of the food, represented as a circle.
+     - Represents the food as a small blue circle.
    - **Methods**:
-     - `refresh()`: Moves the food to a random position on the screen.
+     - `refresh()`: Moves the food to a random location on the screen.
 
-### 3. **ScoreBoard Class (`scoreboard.py`)**:
+### 3. **Scoreboard Class (`scoreboard.py`)**
    - **Attributes**:
-     - `score`: The player's score.
+     - `score`: Tracks the current score.
+     - `highscore`: Stores the highest score, read from and written to `data.txt`.
    - **Methods**:
-     - `update_scoreboard()`: Displays the current score on the screen.
+     - `update_scoreboard()`: Updates the on-screen scoreboard.
      - `increase_score()`: Increases the score and updates the scoreboard.
-     - `game_over()`: Displays a "Game Over" message when the game ends.
+     - `reset()`: Resets the current score and updates the high score if necessary.
 
-### 4. **Main Program (`main.py`)**:
-   - The main script that runs the game, interacting with the `Snake`, `Food`, and `ScoreBoard` classes.
-   - It sets up the screen, listens for key presses to control the snake, and manages the game loop.
+### 4. **Main Program (`main.py`)**
+   - The entry point of the game that ties all the components together.
+   - **Key Features**:
+     - Handles screen setup and listens for user inputs.
+     - Manages the game loop, updating the screen and checking for collisions.
+
+### 5. **Data File (`data.txt`)**
+   - A text file used to store the high score.
 
 ## 📂 Folder Structure
 
-- `food.py`: Contains the `Food` class that represents the food objects.
-- `scoreboard.py`: Contains the `ScoreBoard` class that tracks and displays the score.
-- `snake.py`: Contains the `Snake` class that models the snake and its movement.
-- `main.py`: The main script that runs the game and interacts with the other classes.
+```
+SnakeGame/
+├── snake.py
+├── food.py
+├── scoreboard.py
+├── main.py
+├── data.txt
+```
 
 ## 💡 Features
 
-- **Real-Time Gameplay**: The game runs in real-time, with the snake continuously moving until the game ends.
-- **Snake Growth**: The snake grows longer as it eats food, making the game progressively more challenging.
-- **Score Tracking**: The game tracks the player's score and displays it during the game and at the end.
-- **Game Over**: The game ends when the snake collides with the wall or its own body, and the final score is displayed.
+- **Dynamic Gameplay**: The snake grows longer and moves faster as the game progresses.
+- **Persistent High Score**: The game saves the highest score to `data.txt` for continuity.
+- **Collision Detection**: Detects collisions with the wall or the snake's own body.
 
 ## 🌟 Future Enhancements
 
-- **Levels**: Add multiple levels with increasing speed as the snake grows.
-- **Sound Effects**: Add sound effects for eating food and collisions.
-- **High Score**: Implement a high score tracker to save the highest score achieved.
-- **Game Restart**: Allow players to restart the game without closing the program.
+- **Obstacles**: Add random obstacles that the snake must avoid.
+- **Game Modes**: Introduce difficulty levels or timed challenges.
+- **Customizations**: Allow players to customize the snake's color or speed.
+- **Multiplayer Mode**: Enable two players to control separate snakes.
 
 ## 📜 License
 
